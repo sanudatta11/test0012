@@ -1,5 +1,6 @@
 ﻿'use strict';
 var debug = require('debug');
+const createHandler = require("azure-function-express").createHandler;
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -58,8 +59,9 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function () {
+/*var server = app.listen(app.get('port'), function () {
     debug('Express server listening on port ' + server.address().port);
-});
+});*/
+module.exports = createHandler(app);
